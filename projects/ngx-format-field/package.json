@@ -1,0 +1,23 @@
+{
+  "name": "ngx-format-field",
+  "version": "0.0.1",
+  "author": "Moumita Kundu(moumita.kundu@cognizant.com)",
+  "description": "A Directive to format the view part of Formcontrol without changing the actual value",
+  "homepage": "https://stackblitz.com/edit/angular-ydfct6?file=src%2Fapp%2Fapp.module.ts",
+  "keywords": [
+    "format field",
+    "comma seperator",
+    "angular",
+    "angular 6",
+    "angular 7",
+    "directive",
+    "regex check",
+    "pattern check",
+    "numeric check",
+    "alphabet check"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  }
+}

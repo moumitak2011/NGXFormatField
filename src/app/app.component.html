@@ -1,0 +1,66 @@
+<header>
+  <h2> Format Field Demo</h2>
+  <hr>
+</header>
+<body>
+<div class = "container">
+  <form [formGroup]="uiForm">
+  <div class="form-row">
+    <!-- Units Seperator -->
+    <div class="form-group col-md-6">
+      <label for="currency">Comma Seperator Field with round off</label>
+      <input type="text" autocomplete="off" class="form-control" id="currency" placeholder="Eg. 1234.56" formControlName="currency" [appFormatFields]="CURRENCY"
+        (change)="onChangeCurrency()">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Actual Value</label>
+      <div>{{currency.value}}</div>
+    </div>
+    <!-- Comma Seperator -->
+    <div class="form-group col-md-6">
+      <label for="numeric">Comma Seperator Field</label>
+      <input type="text" autocomplete="off" class="form-control" id="comma" placeholder="Eg. 123456" formControlName="comma" [appFormatFields]="COMMA"
+        (change)="onChangeComma()">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Actual Value</label>
+      <div>{{comma.value}}</div>
+    </div>
+    <!-- Numeric -->
+    <div class="form-group col-md-6">
+      <label for="numeric">Numeric Field with round off</label>
+      <input type="text" autocomplete="off" class="form-control" id="numeric" placeholder="Eg. 1239.567" formControlName="numeric" [appFormatFields]="NUMERIC"
+        (change)="onChangeNumeric()">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Actual Value</label>
+      <div>{{numeric.value}}</div>
+    </div>
+    <!-- Alphabet -->
+    <div class="form-group col-md-6">
+      <label for="numeric">Alphabet Field</label>
+      <input type="text" autocomplete="off" class="form-control" id="alphabet" placeholder="Eg. abcdef" formControlName="alphabet" [appFormatFields]="ALPHABET"
+        (change)="onChangeAlphabet()">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Actual Value</label>
+      <div>{{alphabet.value}}</div>
+    </div>
+    <!-- Pattern -->
+    <div class="form-group col-md-3">
+      <label for="formatRegex">Regex Format</label>
+      <input type="text" autocomplete="off" class="form-control" id="formatRegex" placeholder="Eg. ^[0-9]+$" formControlName="formatRegex">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="pattern">Input Field</label>
+      <input type="text" autocomplete="off" class="form-control" id="pattern" placeholder="Pattern" formControlName="pattern" [appFormatFields]="PATTERN"
+        [formatRegex]="formatRegex.value" (change)="onChangePattern()">
+    </div>
+    <div class="form-group col-md-3">
+      <label>Actual Value</label>
+      <div>{{pattern.value}}</div>
+    </div>
+  </div>
+</form>
+</div>
+</body>
