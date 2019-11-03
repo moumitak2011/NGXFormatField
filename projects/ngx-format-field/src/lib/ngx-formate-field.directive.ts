@@ -14,13 +14,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class NgxFormateFieldDirective implements ControlValueAccessor {
+
   @Input('appFormatFields') appFormatFields: string;
   @Input('formatRegex') formatRegex: string;
+
   public onChange;
   public formattedValue: string[];
+
   constructor(private renderer: Renderer2, private el: ElementRef) { }
+
+  /**
+   * Function to change the formatted value to Orignal form
+   * @param value Value after writeValue method is called
+   */
   @HostListener('input', ['$event.target.value'])
   private input(value) {
+
     if (this.appFormatFields === 'CURRENCY' || this.appFormatFields === 'COMMA' || this.appFormatFields === 'NUMERIC') {
       value = value.split(',').join('');
       value = this.regexChecker('^[0-9]+(.[0-9]+)?$', value);
@@ -33,6 +42,10 @@ export class NgxFormateFieldDirective implements ControlValueAccessor {
     }
     this.onChange(value);
   }
+/**
+ * Formats the value in input field.
+ * @param value Value in the input field
+ */
   public writeValue(value: any): void {
     if (value) {
       switch (this.appFormatFields) {
@@ -59,7 +72,7 @@ export class NgxFormateFieldDirective implements ControlValueAccessor {
           break;
         case 'COMMA':
           if (!isNaN(parseFloat(value))) {
-            value = parseFloat(value).toLocaleString('en', {maximumFractionDigits  : 20});
+            value = parseFloat(value).toLocaleString('en', { maximumFractionDigits: 20 });
           } else { value = ''; }
       }
     }
@@ -79,14 +92,21 @@ export class NgxFormateFieldDirective implements ControlValueAccessor {
     return currency.toString();
 
   }
-
+/**
+ * Function inherited from ControlValueAccessor
+ */
   public registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+ /**
+ * Function inherited from ControlValueAccessor
+ */
   public registerOnTouched(fn: any): void {
     // registerOnTouched is function of ControlValueAccessor
   }
-
+ /**
+ * Function toset the disable property of form
+ */
   public setDisabledState(isDisabled: boolean): void {
     const element = this.el.nativeElement;
     this.renderer.setProperty(element, 'disabled', isDisabled);
